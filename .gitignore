@@ -1,0 +1,42 @@
+# Backend
+/inventory-api/target/
+/inventory-api/.env
+/inventory-api/.idea/
+/inventory-api/*.log
+
+# Frontend
+/inventory-web/node_modules/
+/inventory-web/dist/
+/inventory-web/tmp/
+/inventory-web/out-tsc/
+/inventory-web/bazel-out/
+/inventory-web/.angular/
+/inventory-web/coverage/
+/inventory-web/.idea/
+/inventory-web/.project
+/inventory-web/.classpath
+/inventory-web/.c9/
+/inventory-web/.settings/
+/inventory-web/.history/
+/inventory-web/.sass-cache/
+/inventory-web/connect.lock
+/inventory-web/libpeerconnection.log
+/inventory-web/testem.log
+/inventory-web/typings/
+/inventory-web/npm-debug.log
+/inventory-web/yarn-error.log
+
+# IDEs and system files
+*.iml
+*.launch
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+
+# Environment-managed files
+/.github/modernize/
