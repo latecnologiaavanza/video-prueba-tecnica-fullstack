@@ -1,0 +1,31 @@
+.product-form {
+  min-width: min(520px, 70vw);
+}
+
+.full-width,
+.number-fields mat-form-field {
+  width: 100%;
+}
+
+.number-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.save-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 128px;
+}
+
+@media (max-width: 600px) {
+  .product-form {
+    min-width: 0;
+  }
+
+  .number-fields {
+    grid-template-columns: 1fr;
+  }
+}
