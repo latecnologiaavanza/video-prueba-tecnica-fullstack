@@ -1,6 +1,9 @@
 # 06 — Pruebas automatizadas del backend
 
-> **Origen: prompt posterior proporcionado en la conversación.** El repositorio actual contiene cuatro clases y ocho pruebas que pasaron en GitHub Actions.
+
+## Requisitos de partida
+
+El servicio, el controlador, la entidad y el repositorio ya deben funcionar. Maven debe tener las dependencias de `spring-boot-starter-test` y H2 para las pruebas.
 
 ## Prompt para Codex
 
@@ -10,7 +13,7 @@ Implementa únicamente las pruebas automatizadas del backend, usando el paquete 
 Utiliza JUnit 5, Mockito, MockMvc y H2, con Java 8 y Spring Boot 2.7.18.
 
 1. Crear src/test/resources/application-test.yml:
-- H2: jdbc:h2:mem:inventorydb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+- H2: jdbc:h2:mem:inventory_test;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
 - Usuario sa, contraseña vacía.
 - Hibernate create-drop.
 - Dialecto H2Dialect.
@@ -58,10 +61,6 @@ No crear pruebas adicionales ni modificar la lógica de negocio para ocultar fal
 Ejecuta mvn -B clean verify. Informa el número de pruebas exitosas, fallidas y errores reales.
 ```
 
-## Nota sobre el estado final real
-
-El archivo `application-test.yml` **terminó usando** `jdbc:h2:mem:inventory_test;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE`; esta diferencia de nombre respecto del prompt no cambia la finalidad de las pruebas. Las cuatro clases y ocho tests existen y ejecutaron correctamente.
-
 ## Qué verifica cada test
 
 | Clase | Pruebas |
@@ -80,4 +79,4 @@ Desde `inventory-api/`:
 mvn -B clean verify
 ```
 
-`clean` borra compilaciones anteriores; `verify` ejecuta los tests y valida el ciclo de build. Resultado real del CI: **Tests run: 8, Failures: 0, Errors: 0, Skipped: 0**, `BUILD SUCCESS`.
+`clean` borra compilaciones anteriores; `verify` ejecuta los tests y valida el ciclo de build. El resultado esperado al finalizar la fase es **8 pruebas ejecutadas y 0 fallos**. Si ocurre algún error, revisa los mensajes reales de Maven antes de continuar.

@@ -1,10 +1,14 @@
 # 01 — Contexto del backend para Codex
 
-> **Origen: RECONSTRUCCIÓN DOCUMENTAL.** Se sabe que este fue el primer prompt de contexto enviado a Codex, pero no se recuperó el texto literal. Este texto reproduce los requisitos confirmados, no afirma ser una transcripción.
+> **Nota editorial:** esta fase está documentada a partir de los requisitos técnicos. Es una versión preparada para utilizar con Codex, no una transcripción literal de una instrucción anterior.
 
-## Propósito
+## Requisitos de partida
 
-Dar a Codex las tecnologías, estructura y restricciones **sin autorizar cambios**. De esta forma, los siguientes prompts se pueden ejecutar por fases durante el tutorial.
+Debes contar con un proyecto Spring Boot ubicado en `inventory-api/`, con Java 8 y Maven, y con la carpeta separada `inventory-web/`.
+
+## Objetivo
+
+Dar a Codex las tecnologías, estructura y restricciones **sin autorizar cambios**. Así, cada siguiente fase puede implementarse y verificarse por separado.
 
 ## Prompt para Codex
 
@@ -36,7 +40,7 @@ Reglas de trabajo:
 En esta fase solo confirma el contexto; no ejecutes cambios.
 ```
 
-## Explicación
+## ¿Qué aprenderás?
 
 El primer mensaje **orienta a Codex**. No modifica archivos, no necesita levantar contenedores y reduce el riesgo de que use nombres de paquetes o tecnologías distintas.
 

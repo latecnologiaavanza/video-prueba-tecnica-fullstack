@@ -1,8 +1,11 @@
 # 03 — Ajustes mínimos de compatibilidad
 
-> **Origen: prompt posterior proporcionado en la conversación.** Esta fase corresponde al primer prompt de la serie complementaria, después de contexto y Docker.
 
-## Propósito
+## Requisitos de partida
+
+La carpeta `inventory-api/` ya debe contener `entity/Product.java`, `dto/ProductRequest.java` y `pom.xml`. Verifica la versión en el `pom.xml`: el ajuste indicado solo hace falta si aún dice `1.0-SNAPSHOT`.
+
+## Objetivo
 
 Hacer que JPA reconozca la entidad, que el nombre del JAR coincida con Docker y pulir el texto del DTO, **sin reescribir el backend**.
 
@@ -22,7 +25,7 @@ No cambies paquetes Java, Docker, Flyway, Service, DTO ni otras configuraciones.
 Ejecuta mvn -B -DskipTests clean package y comunica el resultado. No avances a otra fase.
 ```
 
-## Qué significa
+## ¿Qué significa cada ajuste?
 
 - `@Entity`: hace que JPA trate a `Product` como entidad persistente.
 - `pom.xml` con `1.0.0-SNAPSHOT`: el JAR generado debe coincidir con la ruta usada por el Dockerfile.
@@ -38,4 +41,4 @@ mvn -B -DskipTests clean package
 
 `clean` borra el resultado anterior; `package` compila y construye el JAR; `-DskipTests` omite la ejecución de tests, **no la compilación de test**; `-B` usa modo no interactivo de Maven. Debe terminar en `BUILD SUCCESS` y crear `target/inventory-api-1.0.0-SNAPSHOT.jar`.
 
-**Estado en el repositorio actual:** JAR y entidad presentes; no es necesario ejecutar esta corrección otra vez.
+**Resultado esperado:** Maven termina con `BUILD SUCCESS` y el nombre del JAR coincide con el utilizado en el Dockerfile. Si la entidad y el POM ya son correctos, Codex debe dejarlos como están.

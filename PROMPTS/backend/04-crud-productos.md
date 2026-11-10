@@ -1,8 +1,11 @@
 # 04 — Servicio y controlador del CRUD
 
-> **Origen: prompt posterior proporcionado en la conversación.** Mantener el paquete `com.latecnologiaavanza`.
 
-## Propósito
+## Requisitos de partida
+
+Debe existir la entidad `Product`, los DTO `ProductRequest` y `ProductResponse`, `ProductRepository`, la interfaz `ProductService`, `ResourceNotFoundException` y la migración de la tabla `products`. Este paso no crea esas dependencias.
+
+## Objetivo
 
 Implementar la lógica del mantenimiento de productos y exponer sus cinco operaciones REST. DTO, repositorio, excepciones y migración ya existen al iniciar esta fase.
 
@@ -52,7 +55,7 @@ No recrees DTO, Repository, Entity, ProductService ni excepciones existentes.
 No modifiques el frontend, Maven ni Docker. Verifica compilación y detente.
 ```
 
-## Explicación breve
+## ¿Qué hace cada capa?
 
 - **Controller:** recibe solicitudes HTTP y delega en `ProductService`.
 - **ServiceImpl:** contiene reglas del CRUD, búsqueda y conversiones entre DTO y entidad.

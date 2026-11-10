@@ -1,6 +1,6 @@
 # Comandos manuales explicados — backend
 
-Este documento acompaña los prompts 01–07. No es un nuevo prompt para Codex. Los comandos de esta guía ya se usaron o se propusieron durante la implementación. **El backend actual ya está terminado.**
+Este documento acompaña los pasos 01–07 y explica cómo verificar el trabajo. **No es un prompt para Codex**: ejecuta los comandos directamente en tu terminal, después de revisar qué hacen.
 
 ## ¿Desde qué carpeta ejecuto cada comando?
 
@@ -65,7 +65,7 @@ Desde la raíz del repositorio:
 git status
 ```
 
-Lista los archivos modificados y no versionados.
+Muestra los archivos modificados y no versionados.
 
 ```cmd
 git add PROMPTS/
@@ -85,18 +85,15 @@ git push origin main
 
 Envía el commit a la rama `main` de GitHub. **Este comando solo debe usarse si estás realmente trabajando en `main` y quieres publicar la documentación.** Al hacer push, se dispararán los workflows que escuchan la rama `main`.
 
-## Estado confirmado del backend
+## ¿Cuándo está lista la fase?
 
-En la ejecución CI del 23/10/2026, hora de Perú, se verificó:
+- Maven debe mostrar `BUILD SUCCESS` y cero pruebas fallidas.
+- `docker compose config` debe validar la configuración.
+- Los contenedores deben levantarse y el CRUD debe responder en el puerto 8081.
+- GitHub Actions debe mostrar los jobs correctos cuando hayas publicado el workflow.
 
-- `mvn -B clean verify`: **BUILD SUCCESS**.
-- **8 tests**, 0 fallos y 0 errores.
-- JAR subido como artefacto.
-- `docker compose config`: correcto.
-- Imagen Docker: construida correctamente.
-
-El autor del proyecto también indicó haber levantado los contenedores y probado la aplicación y el CI.
+Cada resultado debe comprobarse en **tu propia ejecución**; que el repositorio de ejemplo funcione no demuestra que tu entorno ya esté bien configurado.
 
 ## Alcance de esta carpeta
 
-Los archivos aquí son **prompts y explicación**, no código que se ejecute automáticamente. No necesitas modificar Maven, Docker, Java ni CI para guardarlos.
+Los archivos contienen **prompts, explicaciones y comandos**, no código que se ejecute automáticamente. La carpeta `PROMPTS/` puede guardarse en la raíz del repositorio y no altera Maven, Docker o Java por sí sola.

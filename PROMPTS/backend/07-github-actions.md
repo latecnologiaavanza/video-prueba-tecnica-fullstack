@@ -1,8 +1,11 @@
 # 07 — GitHub Actions del backend
 
-> **Origen: prompt posterior proporcionado en la conversación.** La configuración final del repositorio utiliza `inventory-api-jar` como nombre del artefacto.
 
-## Propósito
+## Requisitos de partida
+
+Debes tener un backend que compile con `mvn -B clean verify`, un `Dockerfile` funcional y un `docker-compose.yml` que pase `docker compose config`.
+
+## Objetivo
 
 Crear el workflow de **integración continua (CI)**: compilar y probar Maven, guardar el JAR y validar/construir la imagen Docker. No despliega el backend en un servidor.
 
@@ -59,22 +62,20 @@ Entregar un informe con pruebas ejecutadas, resultados, errores y pendientes.
 No afirmar que una verificación pasó si no fue ejecutada.
 ```
 
-## Qué ocurre realmente
+## ¿Cómo se ejecuta el workflow?
 
 1. Subes un commit a `main` o `develop`, o abres un Pull Request a `main`.
 2. GitHub ejecuta el job **test** en un equipo de GitHub: instala Java 8, ejecuta Maven y guarda el JAR.
 3. Si `test` tuvo éxito, ejecuta el job **docker**, que valida Compose y construye la imagen del backend.
 4. **No** inicia de forma permanente MySQL, **no** despliega en producción y **no** publica Docker Hub.
 
-**Diferencia documental:** el prompt indicaba subir el JAR sin especificar un nombre de artefacto; el workflow real usa `inventory-api-jar`, lo cual es correcto.
+**Nombre de artefacto:** puedes utilizar `inventory-api-jar` en `actions/upload-artifact@v4`, como en el workflow de este proyecto.
 
-## Comprobación real registrada
+## ¿Cómo verificarlo?
 
-GitHub Actions: https://github.com/latecnologiaavanza/video-prueba-tecnica-fullstack/actions/runs/40049573981
+1. Confirma localmente que `mvn -B clean verify` finalice correctamente.
+2. Sube el archivo `.github/workflows/backend-ci.yml` junto con el código a una rama que active el workflow.
+3. En GitHub, abre **Actions → Backend CI** y comprueba los jobs `Backend tests and package` y `Backend Docker build`.
+4. Si alguno falla, abre sus logs y corrige el problema antes de continuar.
 
-- `Backend tests and package` — **success**.
-- `Backend Docker build` — **success**.
-- 8 pruebas exitosas.
-- Artefacto `inventory-api-jar` generado.
-
-GitHub Actions es la ejecución automática del workflow que Codex creó; Codex no es quien ejecuta el job remoto.
+El resultado esperado es que ambos jobs terminen correctamente y que el JAR aparezca como artefacto del job de pruebas.

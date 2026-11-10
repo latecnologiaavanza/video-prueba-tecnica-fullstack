@@ -1,8 +1,11 @@
 # 05 — CORS y Rate Limiting
 
-> **Origen: prompt posterior proporcionado en la conversación.** Esta versión conserva las expresiones de configuración correctas, sin enlaces añadidos accidentalmente por formato del editor.
 
-## Propósito
+## Requisitos de partida
+
+El CRUD debe estar implementado. En `application.yml` deben existir las propiedades `app.cors.allowed-origins` y `app.rate-limit.*` (verifica antes de enviar el prompt).
+
+## Objetivo
 
 Permitir solicitudes del frontend y limitar la cantidad de peticiones por IP; **no** añadir autenticación, Redis u otro sistema.
 
@@ -55,7 +58,7 @@ No utilizar Redis, Spring Security ni librerías adicionales. No modificar front
 Compilar y detenerse al finalizar.
 ```
 
-## Explicación
+## ¿Qué conceptos debes comprender?
 
 - **CORS:** autoriza a la aplicación Angular en `http://localhost:4200` a llamar a la API cuando se hace una petición entre orígenes distintos.
 - **OPTIONS:** tipo de solicitud usado, entre otros casos, por el navegador para consultar permisos CORS.

@@ -1,10 +1,14 @@
 # 02 — Docker Compose y MySQL
 
-> **Origen: RECONSTRUCCIÓN DOCUMENTAL.** El segundo prompt ya había sido utilizado con Codex antes de las fases posteriores. El texto exacto original no se recuperó; se reconstruyó contrastando el contexto acordado y los archivos existentes del repositorio de trabajo.
+> **Nota editorial:** instrucciones preparadas a partir de la configuración Docker utilizada en la solución. No constituyen una transcripción literal de una instrucción anterior.
 
-## Propósito
+## Requisitos de partida
 
-Preparar el entorno reproducible del backend con **MySQL 8 + Docker Compose**, conservando la configuración Angular ya prevista. No implementar todavía las clases del CRUD.
+Debes tener `inventory-api/pom.xml`, el código fuente del backend y un `docker-compose.yml` en la raíz o listo para ser creado. Debes tener Docker Desktop instalado para ejecutar las comprobaciones.
+
+## Objetivo
+
+Preparar el entorno reproducible del backend con **MySQL 8 + Docker Compose**, sin intervenir en los archivos de Angular. No implementar todavía las clases del CRUD.
 
 ## Prompt para Codex
 
@@ -53,7 +57,7 @@ CORS_ALLOWED_ORIGINS=http://localhost:4200
 No añadir Redis, Kubernetes, autenticación ni otros servicios. No modificar el frontend. No recrear archivos ya correctos. Verificar docker compose config y detenerse; informa qué hiciste y qué debe probarse manualmente.
 ```
 
-## Qué hace cada archivo
+## ¿Para qué sirve cada archivo?
 
 - `inventory-api/Dockerfile`: crea un JAR con Maven y lo ejecuta en una imagen Java 8.
 - `inventory-api/.dockerignore`: evita copiar archivos que no son necesarios al contexto de construcción Docker.
