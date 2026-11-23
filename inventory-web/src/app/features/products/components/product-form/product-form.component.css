@@ -2,6 +2,11 @@
   min-width: min(520px, 70vw);
 }
 
+.product-form mat-dialog-content {
+  display: grid;
+  gap: 16px;
+}
+
 .full-width,
 .number-fields mat-form-field {
   width: 100%;
@@ -10,6 +15,7 @@
 .number-fields {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 16px;
 }
 

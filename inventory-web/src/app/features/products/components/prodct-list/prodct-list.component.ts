@@ -55,7 +55,7 @@ export class ProductListComponent implements OnInit {
     );
 
     merge(searchChanges$, this.refresh$)
-      .pipe(
+      .pipe( //Permite encadenar operadores de RxJS
         startWith(this.searchControl.value),
         switchMap((value) => this.loadProducts(typeof value === 'string' ? value : this.searchControl.value)),
         takeUntilDestroyed(this.destroyRef)
@@ -131,8 +131,9 @@ export class ProductListComponent implements OnInit {
     this.loading = true;
 
     return this.productApiService.getAll(name).pipe(
-      catchError(() => of([])),
+      catchError(() => of([])), 
       finalize(() => (this.loading = false))
     );
   }
 }
+

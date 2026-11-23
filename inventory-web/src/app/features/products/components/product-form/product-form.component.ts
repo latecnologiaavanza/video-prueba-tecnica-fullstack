@@ -20,7 +20,7 @@ export interface ProductFormDialogData {
 }
 
 export const nonBlankValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null =>
-  String(control.value ?? '').trim() ? null : { nonBlank: true };
+  String(control.value ?? '').length > 0 && !String(control.value).trim() ? { nonBlank: true } : null;
 
 @Component({
   selector: 'app-product-form',
